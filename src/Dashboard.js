@@ -1,19 +1,22 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Container, Grid, Card, CardContent, Button } from '@mui/material';
 import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Dashboard = () => {
   const auth = getAuth();
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleLogout = () => {
     signOut(auth).then(() => {
+        navigate('/');
       // Sign-out successful.
       // Redirect to sign-in page or update state accordingly
     }).catch((error) => {
       // An error happened.
     });
   };
-  
+
   const handleSignUp = () => {
     navigate('/signup'); // Adjust the path as necessary
   };

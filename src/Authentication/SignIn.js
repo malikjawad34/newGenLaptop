@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { TextField, Button, Typography, Container, Box, Alert } from '@mui/material';
 
-const SignIn = () => {
+import app from '../firebase-config';
+
+const SignIn = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
