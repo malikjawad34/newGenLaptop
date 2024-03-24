@@ -41,7 +41,7 @@ const SignIn = (props) => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign In
+          Sign In To New Gen Laptop
         </Typography>
         {error && <Alert severity="error" sx={{ width: '100%', mt: 2 }}>{error}</Alert>}
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

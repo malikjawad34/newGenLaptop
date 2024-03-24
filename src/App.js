@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={isSignedIn ? <Navigate replace to="/dashboard" /> : <SignIn onSignIn={handleSignIn} />} />
-          <Route path="/dashboard" element={isSignedIn ? <Dashboard /> : <Navigate replace to="/" />} />
+          <Route path="/dashboard" element={isSignedIn ? <Dashboard setIsSignedIn={setIsSignedIn} /> : <Navigate replace to="/" />} />
           <Route exact path="/signup" element={<SignUp />} />
         </Routes>
       </div>
