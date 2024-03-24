@@ -59,7 +59,20 @@ const Sidebar = () => {
           </ListItemIcon>
           <ListItemText primary="Sign Up" sx={{ color: 'lightgray' }}/>
         </ListItem>
-        {/* Add more list items here as needed */}
+        <ListItem
+          component={Link}
+          to="/laptop"
+          sx={{
+            '&:hover': {
+              backgroundColor: '#34495E', // Darken on hover
+            },
+          }}
+        >
+          <ListItemIcon sx={{ color: 'inherit' }}>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Laptop" sx={{ color: 'lightgray' }}/>
+        </ListItem>
       </List>
     </Drawer>
   );

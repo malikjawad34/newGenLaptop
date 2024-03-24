@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { getAuth, signOut } from "firebase/auth";
-import app from '../firebase-config';
+import {app} from '../firebase-config';
 
 
 const Header = (props) => {

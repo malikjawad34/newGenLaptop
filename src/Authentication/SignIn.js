@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { TextField, Button, Typography, Container, Box, Alert } from '@mui/material';
 
-import app from '../firebase-config';
+import {app} from '../firebase-config';
 
 const SignIn = (props) => {
   const [email, setEmail] = useState('');

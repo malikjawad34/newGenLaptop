@@ -6,7 +6,7 @@ import { Snackbar, Alert } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import app from '../firebase-config';
+import {app} from '../firebase-config';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
