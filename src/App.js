@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './Dashboard'; // Make sure this path is correct
+import { BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import SignIn from './Authentication/SignIn';
-import SignUp from './Authentication/SignUp';
+import Layout from './components/Layout';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -17,11 +16,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Routes>
-          <Route path="/" element={isSignedIn ? <Navigate replace to="/dashboard" /> : <SignIn onSignIn={handleSignIn} />} />
-          <Route path="/dashboard" element={isSignedIn ? <Dashboard setIsSignedIn={setIsSignedIn} /> : <Navigate replace to="/" />} />
-          <Route exact path="/signup" element={<SignUp />} />
-        </Routes>
+        {isSignedIn ? (
+          <Layout setIsSignedIn={setIsSignedIn} />
+        ) : (
+          <SignIn onSignIn={handleSignIn} />
+        )
+        }
       </div>
     </Router>
   );
