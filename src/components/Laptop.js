@@ -18,13 +18,17 @@ const style = {
   p: 4,
 };
 
+const intialValues = {
+  name:'',
+  type:'',
+  price:'',
+  processor:'',
+  company:'',
+}
+
 const Laptop = () => {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState('');
-  const [type, setType] = useState('');
-  const [company, setCompany] = useState('');
-  const [price, setPrice] = useState('');
-  const [processor, setProcessor] = useState('');
+  const [values, setValues] = useState(intialValues);
   const [laptops, setLaptops] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,18 +52,25 @@ const Laptop = () => {
   }, [fetchLaptops]);
 
   const handleOpen = () => setOpen(true); // Function to open the modal
-  const handleClose = () => setOpen(false); // Function to close the modal
+  const handleClose = () => {
+    setOpen(false);
+    setValues(intialValues);
+  }; // Function to close the modal
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value
+    });
+  }
 
   const addLaptop = async () => {
     setIsLoading(true); // Start loading
     try {
-      await addDoc(laptopsCollectionRef, { name, type, company, price, processor });
+      await addDoc(laptopsCollectionRef, values);
       handleClose();
-      setName('');
-      setType('');
-      setCompany('');
-      setPrice('');
-      setProcessor('');
       await fetchLaptops(); // Refresh the list
     } catch (error) {
       console.error("Failed to add laptop:", error);
@@ -100,11 +111,11 @@ const Laptop = () => {
               <Typography id="add-laptop-modal" variant="h6" component="h2">
                 Add a New Laptop
               </Typography>
-              <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth margin="dense" />
-              <TextField label="Type" value={type} onChange={(e) => setType(e.target.value)} fullWidth margin="dense" />
-              <TextField label="Company" value={company} onChange={(e) => setCompany(e.target.value)} fullWidth margin="dense" />
-              <TextField label="Price" value={price} onChange={(e) => setPrice(e.target.value)} fullWidth margin="dense" />
-              <TextField label="Processor" value={processor} onChange={(e) => setProcessor(e.target.value)} fullWidth margin="dense" />
+              <TextField label="Name" name='name' value={values.name} onChange={handleInputChange} fullWidth margin="dense" />
+              <TextField label="Type" name='type' value={values.type} onChange={handleInputChange} fullWidth margin="dense" />
+              <TextField label="Company" name='company' value={values.company} onChange={handleInputChange} fullWidth margin="dense" />
+              <TextField label="Price" name='price' value={values.price} onChange={handleInputChange} fullWidth margin="dense" />
+              <TextField label="Processor" name='processor' value={values.processor} onChange={handleInputChange} fullWidth margin="dense" />
               <Button onClick={addLaptop} style={{ marginTop: '20px' }}>Submit</Button>
               <Button onClick={handleClose} style={{ marginTop: '20px' }}>Cancel</Button>
             </Box>
@@ -136,13 +147,6 @@ const Laptop = () => {
                     <TableCell align="center">{laptop.price}</TableCell>
                     <TableCell align="center">{laptop.processor}</TableCell>
                     <TableCell align="right">
-                      {/* <Button
-                        variant="contained"
-                        color="error"
-                        onClick={() => deleteLaptop(laptop.id)}
-                      >
-                        
-                      </Button> */}
                       <DeleteIcon style={{ cursor: 'pointer'}} color="error" fontSize="medium" onClick={() => deleteLaptop(laptop.id)} />
                     </TableCell>
                   </TableRow>
