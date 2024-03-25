@@ -28,4 +28,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEW_GEN_LAPTOP }}'
           channelId: live  # If you want to deploy to a live channel, ensure this is configured in your Firebase project.
           projectId: new-gen-laptop
-          entryPoint: build  # Make sure this points to the folder where your build output is.
