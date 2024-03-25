@@ -28,7 +28,7 @@ const Sidebar = () => {
           color: 'lightgray', // Title color
         }}
       >
-        
+        NewGen
       </Typography>
       <List>
         <ListItem
