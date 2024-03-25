@@ -2,6 +2,7 @@ import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
+import LaptopIcon from '@mui/icons-material/Laptop';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -40,7 +41,7 @@ const Sidebar = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }}>
+          <ListItemIcon sx={{ color: 'white' }}>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Dashboard" sx={{ color: 'lightgray' }}/>
@@ -54,7 +55,7 @@ const Sidebar = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }}>
+          <ListItemIcon sx={{ color: 'white' }}>
             <PeopleIcon />
           </ListItemIcon>
           <ListItemText primary="Sign Up" sx={{ color: 'lightgray' }}/>
@@ -68,8 +69,8 @@ const Sidebar = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ color: 'inherit' }}>
-            <PeopleIcon />
+          <ListItemIcon sx={{ color: 'white' }}>
+            <LaptopIcon />
           </ListItemIcon>
           <ListItemText primary="Laptop" sx={{ color: 'lightgray' }}/>
         </ListItem>
